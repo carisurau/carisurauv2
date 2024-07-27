@@ -2,32 +2,75 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
-}
-
-@media (prefers-color-scheme: dark) {
+@layer base {
   :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
+    /* Brand */
+    --brand-primary: #5b5cec;
+    --brand-100: #9b95cb;
+    --brand-200: #cfc8ff;
+    --brand-300: #f2ecff;
+    --brand-400: #faf7ff;
+
+    /* Brand 2 */
+    --brand2: #ffc947;
+
+    /* Based */
+    --based-dark: #2d2d2d;
+    --based-medium: #4a4a5f;
+    --based-light: #b4b4c7;
+
+    /* Shades */
+    --shade-1: #0e0e8a;
+    --shade-2: #3434b8;
+    --shade-3: #5b5cec;
+    --shade-4: #7f7ff0;
+    --shade-5: #a3a3f4;
+    --shade-6: #c7c7f7;
+    --shade-7: #e0e0fb;
+    --shade-8: #f2f2fe;
+
+    /* Gradient */
+    --gradient-1: #c367e6;
+    --gradient-2: #f77fad;
+    --gradient-3: #ff9776;
+    --gradient-4: #ffb347;
+    --gradient-5: #c9d66b;
+
+    /* Condition */
+    --condition-warning: #ffc947;
+    --condition-error: #ff5c5c;
   }
-}
+  .dark {
+    /* Dark mode colors (your original palette) */
+    --gradient: #525bd1;
 
-body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
-}
+    --background: 250 37.7% 4.56%;
+    --foreground: 250 5.8% 97.85%;
 
-@layer utilities {
-  .text-balance {
-    text-wrap: balance;
+    --muted: 250 29% 17.1%;
+    --muted-foreground: 250 5.8% 55.7%;
+
+    --popover: 250 53.4% 7.41%;
+    --popover-foreground: 250 5.8% 97.85%;
+
+    --card: 250 53.4% 7.41%;
+    --card-foreground: 250 5.8% 97.85%;
+
+    --border: 250 29% 17.1%;
+    --input: 250 29% 17.1%;
+
+    --primary: 250 58% 57%;
+    --primary-foreground: 250 5.8% 5.7%;
+
+    --secondary: 250 29% 17.1%;
+    --secondary-foreground: 250 5.8% 97.85%;
+
+    --accent: 250 29% 17.1%;
+    --accent-foreground: 250 5.8% 97.85%;
+
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 250 5.8% 97.85%;
+
+    --ring: 250 58% 57%;
   }
 }

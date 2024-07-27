@@ -1,113 +1,189 @@
+"use client";
+
+import MultipleSelector from "@/components/custom/MultipleSelector";
+import { Button } from "@/components/ui/button";
+import { Separator } from "@/components/ui/separator";
+import { Heart, MapPinIcon, MenuIcon, Star } from "lucide-react";
 import Image from "next/image";
+import {
+  Sheet,
+  SheetClose,
+  SheetContent,
+  SheetDescription,
+  SheetFooter,
+  SheetHeader,
+  SheetTitle,
+  SheetTrigger,
+} from "@/components/ui/sheet";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
+import { useState } from "react";
+
+const Header = () => (
+  <>
+    <div className="flex justify-between">
+      <Image
+        src="/logos/carisurau-purple.png"
+        alt="carisurau-logo-purple"
+        width={16}
+        height={28.28}
+      />
+
+      <Sheet>
+        <SheetTrigger asChild>
+          <MenuIcon
+            className="w-8 h-8"
+            style={{ color: "var(--foreground)" }}
+          />
+        </SheetTrigger>
+        <SheetContent side="top" className="bg-white">
+          <SheetHeader className="flex items-start justify-start">
+            <SheetTitle></SheetTitle>
+            <Image
+              src="/logos/carisurau-purple.png"
+              alt="carisurau-logo-purple"
+              width={16}
+              height={28.28}
+            />
+          </SheetHeader>
+          <div className="pt-6 w-full">
+            <Select>
+              <SelectTrigger className="bg-white border-b outline-none ring-0 text-brand-primary">
+                <SelectValue placeholder="All" />
+              </SelectTrigger>
+              <SelectContent className="bg-white rounded-xl shadow-xl">
+                <SelectItem value="All">All</SelectItem>
+                <SelectItem value="surau-only">Surau only</SelectItem>
+                <SelectItem value="masjid-only">Masjid only</SelectItem>
+              </SelectContent>
+            </Select>
+            <div className="pt-4">
+              <MultipleSelector
+                maxSelected={1}
+                placeholder="Search..."
+                className="rounded-full border-gray-400"
+                options={[
+                  { value: "1", label: "Surau 1" },
+                  { value: "2", label: "Surau 2" },
+                  { value: "3", label: "Surau 3" },
+                  { value: "4", label: "Surau 4" },
+                  { value: "5", label: "Surau 5" },
+                  { value: "6", label: "Surau 6" },
+                  { value: "7", label: "Surau 7" },
+                  { value: "8", label: "Surau 8" },
+                  { value: "9", label: "Surau 9" },
+                  { value: "10", label: "Surau 10" },
+                  { value: "11", label: "Surau 11" },
+                  { value: "12", label: "Surau 12" },
+                  { value: "13", label: "Surau 13" },
+                  { value: "14", label: "Surau 14" },
+                  { value: "15", label: "Surau 15" },
+                  { value: "16", label: "Surau 16" },
+                  { value: "17", label: "Surau 17" },
+                  { value: "18", label: "Surau 18" },
+                  { value: "19", label: "Surau 19" },
+                  { value: "20", label: "Surau 20" },
+                ]}
+              />
+            </div>
+          </div>
+        </SheetContent>
+      </Sheet>
+    </div>
+  </>
+);
+
+const SurauCard = () => (
+  <div className="grid grid-cols-3 overflow-hidden">
+    <div className="px-2">
+      <div className="relative h-24 w-full rounded-full">
+        <Image
+          className="h-full w-full object-cover rounded-xl"
+          src="/example/masjidputra.jpg"
+          alt="Masjid Abidin"
+          layout="fill"
+        />
+        <Heart className="absolute top-2 right-2 h-4 w-4 text-white" />
+      </div>
+    </div>
+
+    <div className="col-span-2 flex flex-col">
+      <div className="uppercase tracking-wide text-sm font-semibold line-clamp-2">
+        Masjid Abidin (Masjid Negeri Terengganu)
+      </div>
+      <div className="flex items-center mt-2">
+        <Star className="h-4 w-4" fill="black" />
+        <span className="ml-2 text-gray-600">4.0</span>
+      </div>
+      <div className="flex items-center mt-2">
+        <MapPinIcon className="h-4 w-4" />
+        <span className="ml-1 font-light">Bandar, Kuala Terengganu</span>
+      </div>
+    </div>
+  </div>
+);
 
 export default function Home() {
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24">
-      <div className="z-10 w-full max-w-5xl items-center justify-between font-mono text-sm lg:flex">
-        <p className="fixed left-0 top-0 flex w-full justify-center border-b border-gray-300 bg-gradient-to-b from-zinc-200 pb-6 pt-8 backdrop-blur-2xl dark:border-neutral-800 dark:bg-zinc-800/30 dark:from-inherit lg:static lg:w-auto  lg:rounded-xl lg:border lg:bg-gray-200 lg:p-4 lg:dark:bg-zinc-800/30">
-          Get started by editing&nbsp;
-          <code className="font-mono font-bold">src/app/page.tsx</code>
-        </p>
-        <div className="fixed bottom-0 left-0 flex h-48 w-full items-end justify-center bg-gradient-to-t from-white via-white dark:from-black dark:via-black lg:static lg:size-auto lg:bg-none">
-          <a
-            className="pointer-events-none flex place-items-center gap-2 p-8 lg:pointer-events-auto lg:p-0"
-            href="https://vercel.com?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            By{" "}
-            <Image
-              src="/vercel.svg"
-              alt="Vercel Logo"
-              className="dark:invert"
-              width={100}
-              height={24}
-              priority
-            />
-          </a>
+    <div className="xl:px-96">
+      <Header />
+      <div className="pt-6">
+        <div>
+          <MultipleSelector
+            placeholder="Search for a surau..."
+            className="rounded-full border-gray-400"
+            options={[
+              { value: "1", label: "Surau 1" },
+              { value: "2", label: "Surau 2" },
+              { value: "3", label: "Surau 3" },
+              { value: "4", label: "Surau 4" },
+              { value: "5", label: "Surau 5" },
+              { value: "6", label: "Surau 6" },
+              { value: "7", label: "Surau 7" },
+              { value: "8", label: "Surau 8" },
+              { value: "9", label: "Surau 9" },
+              { value: "10", label: "Surau 10" },
+              { value: "11", label: "Surau 11" },
+              { value: "12", label: "Surau 12" },
+              { value: "13", label: "Surau 13" },
+              { value: "14", label: "Surau 14" },
+              { value: "15", label: "Surau 15" },
+              { value: "16", label: "Surau 16" },
+              { value: "17", label: "Surau 17" },
+              { value: "18", label: "Surau 18" },
+              { value: "19", label: "Surau 19" },
+              { value: "20", label: "Surau 20" },
+            ]}
+          />
+        </div>
+        <div className="pt-2 text-center">
+          Can&apos;t find your surau/masjid?
+          <Button variant="link" className="text-brand-primary">
+            Add here
+          </Button>
+        </div>
+        <Separator className="mt-4" />
+        <div className="pt-2">
+          <h1 className="text-xl font-bold">Most Viewed</h1>
+        </div>
+        <div className="pt-4 xl:px-48">
+          {/* <MostViewedLists /> */}
+          <SurauCard />
+        </div>
+        <div className="pt-4">
+          <div className="flex items-center justify-center flex-col py-2 bg-brand-400">
+            <div>Can&apos;t find your surau/masjid?</div>
+            <Button variant="link" className=" text-brand-primary">
+              Add here
+            </Button>
+          </div>
         </div>
       </div>
-
-      <div className="relative z-[-1] flex place-items-center before:absolute before:h-[300px] before:w-full before:-translate-x-1/2 before:rounded-full before:bg-gradient-radial before:from-white before:to-transparent before:blur-2xl before:content-[''] after:absolute after:-z-20 after:h-[180px] after:w-full after:translate-x-1/3 after:bg-gradient-conic after:from-sky-200 after:via-blue-200 after:blur-2xl after:content-[''] before:dark:bg-gradient-to-br before:dark:from-transparent before:dark:to-blue-700 before:dark:opacity-10 after:dark:from-sky-900 after:dark:via-[#0141ff] after:dark:opacity-40 sm:before:w-[480px] sm:after:w-[240px] before:lg:h-[360px]">
-        <Image
-          className="relative dark:drop-shadow-[0_0_0.3rem_#ffffff70] dark:invert"
-          src="/next.svg"
-          alt="Next.js Logo"
-          width={180}
-          height={37}
-          priority
-        />
-      </div>
-
-      <div className="mb-32 grid text-center lg:mb-0 lg:w-full lg:max-w-5xl lg:grid-cols-4 lg:text-left">
-        <a
-          href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className="mb-3 text-2xl font-semibold">
-            Docs{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className="m-0 max-w-[30ch] text-sm opacity-50">
-            Find in-depth information about Next.js features and API.
-          </p>
-        </a>
-
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className="mb-3 text-2xl font-semibold">
-            Learn{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className="m-0 max-w-[30ch] text-sm opacity-50">
-            Learn about Next.js in an interactive course with&nbsp;quizzes!
-          </p>
-        </a>
-
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className="mb-3 text-2xl font-semibold">
-            Templates{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className="m-0 max-w-[30ch] text-sm opacity-50">
-            Explore starter templates for Next.js.
-          </p>
-        </a>
-
-        <a
-          href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className="mb-3 text-2xl font-semibold">
-            Deploy{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className="m-0 max-w-[30ch] text-balance text-sm opacity-50">
-            Instantly deploy your Next.js site to a shareable URL with Vercel.
-          </p>
-        </a>
-      </div>
-    </main>
+    </div>
   );
 }
